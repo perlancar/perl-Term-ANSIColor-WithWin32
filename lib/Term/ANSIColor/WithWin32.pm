@@ -13,9 +13,12 @@ use warnings;
 if ($^O =~ /^(MSWin32)$/) { require Win32::Console::ANSI }
 
 use Term::ANSIColor (); # XXX color() & colored() still imported?
-no warnings 'redefine', 'once';
+no warnings 'redefine';
 
-*import = \&Term::ANSIColor::import;
+sub import {
+    my $pkg = shift;
+    Term::ANSIColor->import(@_);
+}
 
 1;
 #ABSTRACT: Use Term::ANSIColor and load Win32::Console::ANSI on Windows
