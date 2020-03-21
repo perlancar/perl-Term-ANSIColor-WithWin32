@@ -17,7 +17,7 @@ no warnings 'redefine';
 
 sub import {
     my $pkg = shift;
-    Term::ANSIColor->import(@_);
+    Term::ANSIColor->export_to_level(1, @_);
 }
 
 1;
