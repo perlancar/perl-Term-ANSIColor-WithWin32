@@ -13,7 +13,7 @@ use warnings;
 if ($^O =~ /^(MSWin32)$/) { require Win32::Console::ANSI }
 
 use Term::ANSIColor (); # XXX color() & colored() still imported?
-no warnings 'redefine';
+no warnings 'redefine', 'once';
 
 *import = \&Term::ANSIColor::import;
 
